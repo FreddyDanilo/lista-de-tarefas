@@ -1,0 +1,262 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Space Grotesk";
+}
+
+/* rgba(112, 255, 121, 1); */
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(60, 60, 60, 1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.tasks-container {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.tasks-container > :is(.add-task-container, .list-tasks-container) {
+  width: 100%;
+}
+
+.tasks-container > .add-task-container > form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+:is(input, button, textarea) {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 0;
+  outline: 0;
+  transition: 0.25s;
+}
+
+:is(input, textarea) {
+  background-color: rgba(70, 70, 70, 1);
+  color: rgba(112, 255, 121, 1);
+  border: 1px solid rgba(70, 70, 70, 1);
+}
+
+input {
+  width: calc(70% - 8px);
+}
+
+textarea {
+  width: 100%;
+  height: 40vh;
+  max-height: 100px;
+  resize: none;
+}
+
+:is(input, textarea)::placeholder {
+  color: rgba(112, 255, 121, 1);
+  font-weight: 300;
+}
+
+:is(input, textarea):hover {
+  background-color: rgba(50, 50, 50, 1);
+  border: 1px solid rgba(50, 50, 50, 1);
+}
+
+button {
+  width: calc(30% - 8px);
+  background-color: rgba(112, 255, 121, 1);
+  color: rgba(50, 50, 50, 1);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid rgba(112, 255, 121, 1);
+  background-color: rgba(60, 60, 60, 1);
+  color: rgba(112, 255, 121, 1);
+}
+
+.tasks-container > .list-tasks-container > ul {
+  width: 100%;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.tasks-container > .list-tasks-container > ul > li {
+  width: 100%;
+  padding: 16px;
+  background-color: rgba(50, 50, 50, 1);
+  border-radius: 4px;
+  color: rgba(112, 255, 121, 1);
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.25s;
+  overflow-x: hidden;
+}
+
+.tasks-container > .list-tasks-container > ul > li::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  content: "Ver";
+  background-color: rgba(112, 255, 121, 1);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 16px 0;
+  color: rgba(50, 50, 50, 1);
+  font-weight: 700;
+  max-width: 0px;
+  overflow-x: hidden;
+  transition: 0.25s;
+  opacity: 0;
+}
+
+.tasks-container > .list-tasks-container > ul > li:hover {
+  padding-left: 72px;
+}
+
+.tasks-container > .list-tasks-container > ul > li:hover::before {
+  max-width: none;
+  padding: 16px;
+  opacity: 1;
+}
+
+.modal-task {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  place-items: center;
+  overflow: hidden;
+}
+
+.modal-task-animation {
+  animation: modal 0.5s forwards;
+}
+
+@keyframes modal {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.modal-task > .task-container {
+  width: 100%;
+  max-width: 480px;
+  background-color: rgba(60, 60, 60, 1);
+  border-radius: 4px;
+  transition: 0.5s;
+  transform: translateY(-200%);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  position: relative;
+}
+
+.modal-task > .task-container-animation {
+  transform: translateY(0%);
+}
+
+.modal-task ::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(60, 60, 60, 1);
+}
+
+.modal-task ::-webkit-scrollbar-thumb {
+  background-color: rgba(112, 255, 121, 1);
+  border-radius: 6px;
+  border: 2px solid rgba(60, 60, 60, 1);
+}
+
+.modal-task > .task-container h1 {
+  max-height: 200px;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.modal-task > .task-container p {
+  max-height: 400px;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(112, 255, 121, 1);
+  line-height: 24px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.modal-task > .task-container pre {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 1);
+  line-height: 24px;
+  text-align: right;
+}
+
+.modal-task > .task-container div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-task > .task-container button {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  outline: 0px;
+  cursor: pointer;
+  border: 1px solid rgba(112, 255, 121, 1);
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.modal-task > .task-container [data-edit-button] {
+  background-color: rgba(112, 255, 121, 1);
+  color: rgba(50, 50, 50, 1);
+}
+
+.modal-task > .task-container [data-edit-button]:hover {
+  background-color: rgba(60, 60, 60, 1);
+  color: rgba(112, 255, 121, 1);
+}
+
+.modal-task > .task-container [data-delete-button] {
+  background-color: rgba(60, 60, 60, 1);
+  color: rgba(112, 255, 121, 1);
+}
+
+.modal-task > .task-container [data-delete-button]:hover {
+  background-color: rgba(112, 255, 121, 1);
+  color: rgba(50, 50, 50, 1);
+}
+
+.modal-task > .task-container input{
+  width: 100%;
+}
+
+
+.modal-task > .task-container textarea{
+  height: 50vh;
+  max-height: 200px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="tasks-container">
+      <div class="add-task-container">
+        <form>
+          <input
+            type="text"
+            placeholder="Título da tarefa"
+            data-add-task-title
+          />
+          <button data-add-task-button>Adicionar</button>
+          <textarea
+            placeholder="Descrição tarefa"
+            data-add-task-description
+          ></textarea>
+        </form>
+      </div>
+
+      <div class="list-tasks-container">
+        <ul data-list-tasks></ul>
+      </div>
+    </div>
+
+    <div class="modal-task" data-modal-task>
+      <div class="task-container" data-task-container></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
