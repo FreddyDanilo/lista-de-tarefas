@@ -5,8 +5,6 @@
   font-family: "Space Grotesk";
 }
 
-/* rgba(112, 255, 121, 1); */
-
 body {
   width: 100%;
   min-height: 100vh;
@@ -165,7 +163,7 @@ button:hover {
   background-color: rgba(60, 60, 60, 1);
   border-radius: 4px;
   transition: 0.5s;
-  transform: translateY(-200%);
+  transform: translateY(-400%);
   padding: 16px;
   display: grid;
   grid-template-columns: 1fr;
